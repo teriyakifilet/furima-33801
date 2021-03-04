@@ -6,9 +6,9 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true
   validates :birthday, presence: true
-  
+
   # パスワードは半角英数字混合での入力が必須
-  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
   validates_format_of :password, with: VALID_PASSWORD_REGEX, message: 'には英字と数字の両方を含めて設定してください'
 
   # ユーザー本名は全角（漢字・ひらがな・カタカナ）での入力が必須
@@ -22,5 +22,4 @@ class User < ApplicationRecord
     validates :first_name_kana
     validates :last_name_kana
   end
-
 end
