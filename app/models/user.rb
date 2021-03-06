@@ -4,6 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # アソシエーション
+  has_many :items
+
+  # バリデーションここから
   with_options presence: true do
     validates :nickname, :birthday
   end
@@ -23,4 +27,5 @@ class User < ApplicationRecord
     validates :first_name_kana
     validates :last_name_kana
   end
+  # バリデーションここまで
 end
