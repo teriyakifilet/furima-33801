@@ -107,7 +107,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include('Last name kana は全角（カタカナ）で入力してください')
       end
       it 'ユーザー本名の名前は全角カタカナ以外での入力では登録できない' do
-        @user.first_name_kana = ''
+        @user.first_name_kana = 'test'
         @user.valid?
         expect(@user.errors.full_messages).to include('First name kana は全角（カタカナ）で入力してください')
       end
