@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, only: [:new]
-
+  before_action :authenticate_user!, only: [:new]
+ 
   def index
   end
 
@@ -12,12 +12,8 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
-    elsif render :new
+    else render :new
     end
-  end
-
-  def move_to_index
-    redirect_to new_user_session_path unless user_signed_in?
   end
 
   private
